@@ -5,12 +5,12 @@ Node
 Angular CLI
 
 In the backend directory:
-Run `pip install fastapi contextlib pydantic` to get the required external python libraries.
-Run `python3 -m uvicorn backend:api --reload` to start the API.
+1. Run `pip install fastapi contextlib pydantic` to get the required external python libraries.
+2. Run `python3 -m uvicorn backend:api --reload` to start the API.
 
 In the frontend directory:
-Run `npm install` to install all necessary packages.
-run `ng serve` to start the frontend.
+1. Run `npm install` to install all necessary packages.
+2. run `ng serve` to start the frontend.
 
 Navigate to http://localhost:4200 in any browser to see the dashboard. Click any of the "Start mocks" buttons or use the file picker to upload a CSV file to simulate orders arriving from different sources.
 
