@@ -1,8 +1,8 @@
 # Mock Order Service
 Prerequisites:
-Python 3
-Node
-Angular CLI
+- Python 3
+- Node
+- Angular CLI
 
 In the backend directory:
 1. Run `pip install fastapi contextlib pydantic` to get the required external python libraries.
