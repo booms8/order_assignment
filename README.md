@@ -20,25 +20,25 @@ To reset the system, stop both processes, delete the `backend.db` in the backend
 `GET http://localhost:8000/api/orders`  
 Returns all orders currently in the database
 
-`GET http://localhost:8000/api/orders/{order}`
+`GET http://localhost:8000/api/orders/{order}`  
 Returns all versions of a specific order
 
-`GET http://localhost:8000/api/orders/status/{status}`
+`GET http://localhost:8000/api/orders/status/{status}`  
 Returns all orders matching the string passed in {status}, or all orders in the "dispatched" state if the status is "dispatched"
 
-`GET http://localhost:8000/api/orders/restaurant/{restaurant}`
+`GET http://localhost:8000/api/orders/restaurant/{restaurant}`  
 Returns all orders from the specified restaurant
 
-`GET http://localhost:8000/api/orders/source/{source}`
+`GET http://localhost:8000/api/orders/source/{source}`  
 Returns all orders placed from the specified source
 
-`POST http://localhost:8000/api/orders`
+`POST http://localhost:8000/api/orders`  
 Inserts an order into the Database
 
-`POST http://localhost:8000/api/orders/webhook`
+`POST http://localhost:8000/api/orders/webhook`  
 Accepts and inserts orders in the format accepted by the webhook
 
-`POST http://localhost:8000/api/orders/batch`
+`POST http://localhost:8000/api/orders/batch`  
 Accepts and inserts an array of orders
 
 # TODOs
