@@ -1,0 +1,86 @@
+<main>
+  <div>
+    <h2>Mock Controls</h2>
+    <div>
+      <button matButton (click)="toggleWebhookMocks()">
+        {{!webhookRunning ? 'Start' : 'Stop'}} webhook mock
+      </button>
+      <button matButton (click)="togglePollingApiMock()">
+        {{!pollingApiRunning ? 'Start' : 'Stop'}} polling API mock
+      </button>
+    </div>
+    <div>
+      <input type="file" #filePicker accept=".csv" (change)="onCsvLoad($event)" style="display: none;" />
+      <div class="filePickerContainer">
+        <button matButton (click)="filePicker.click()">Choose a CSV file</button>
+        @if (lastCsv) { <span class="fileName">{{lastCsv.name}}</span> }
+      </div>
+    </div>
+  </div>
+  <div class="topPane">
+    <div class="filtersPane">
+      <h2>Filters</h2>
+      <div>
+        <mat-form-field>
+          <mat-label>Status View</mat-label>
+          <mat-select (selectionChange)="statusSelectionChanged($event.value)">
+            <mat-option value="ordered">Ordered</mat-option>
+            <mat-option value="processing">Processing</mat-option>
+            <mat-option value="with_courier">With Courier</mat-option>
+            <mat-option value="delivered">Delivered</mat-option>
+            <mat-option value=""><b>Clear Selection</b></mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button matButton (click)="showDispatchedChanged()">
+          Show Dispatched Orders
+        </button>
+      </div>
+    </div>
+    <div class="countsPane">
+    </div>
+  </div>
+  <div class="ordersPane">
+    @if (loading()) {
+      <p>Waiting...</p>
+    } @else {
+      <div class=listPane>
+        @for (order of orders; track order.id) {
+          <div class=orderRow>
+            <div class="order">
+              @if (order.first_name && order.last_name) {
+                <h4>{{order.first_name}} {{order.last_name}} ({{order.order_id}})</h4>
+              } @else {
+                <h4>{{order.order_id}}</h4>
+              }
+              <p>{{order.items}}</p>
+            </div>
+            <button matButton (click)=getOrderDetails(order.order_id)>
+              Show details
+            </button>
+          </div>
+        }
+        @empty {
+          <p>No orders to display</p>
+        }
+      </div>
+      <div class="detailsPane">
+        @if (orderDetails.length == 0) {
+          <p>No order detail selected</p>
+        } @else {
+          @for (order of orderDetails; track order.id) {
+            <div class=order>
+              <h3>Order {{order.order_id ? order.order_id : order.id}}</h3>
+              @if (order.first_name && order.last_name) {
+                <p>Ordered by {{order.first_name}} {{order.last_name}}</p>
+              }
+              <p>{{order.items}}</p>
+              @if (order.tomorrow) {<h4>Scheduled for tomorrow</h4>}
+              <h4>Status: {{order.status}}, {{order.dispatched ? 'Dispatched' : 'Not Dispatched'}}</h4>
+            </div>
+          }
+        }
+      </div>
+    }
+  </div>
+</main>
+<router-outlet />

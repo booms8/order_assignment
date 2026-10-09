@@ -1,0 +1,44 @@
+@use '@angular/material' as mat;
+@include mat.core();
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  .topPane {
+    display: flex;
+    flex-direction: row;
+
+    .filtersPane {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .ordersPane {
+    display: flex;
+    flex-direction: row;
+
+    .listPane {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+
+      .orderRow {
+        display: flex;
+        flex-direction: row;
+
+        .order {
+          max-width: 50%;
+          width: 50%
+        }
+      }
+    }
+
+    .detailsPane {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+    }
+  }
+}
