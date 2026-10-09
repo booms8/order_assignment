@@ -41,7 +41,7 @@ Accepts and inserts orders in the format accepted by the webhook
 `POST http://localhost:8000/api/orders/batch`  
 Accepts and inserts an array of orders
 
-# TODOs
+## TODOs
 Improved frontend:
 - Better display model for simple and detailed order views
 - Graphs/fancier visualizations
